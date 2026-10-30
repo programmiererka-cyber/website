@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adrjinos Developer Portal — API, SDKs & Plattform</title>
+  <meta name="description" content="Adrjinos Developer Portal: eine API für Auth, Daten und Deployments. Typsichere SDKs, faire Rate Limits und Live-Status." />
+  <meta name="theme-color" content="#07030b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <div class="aurora" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Adrjinos Developer Portal — Startseite">
+      <span class="brand-mark" aria-hidden="true">AD</span>
+      <span class="brand-text">
+        ADRJINOS
+        <small>DEVELOPER PORTAL</small>
+      </span>
+    </a>
+
+    <nav aria-label="Hauptnavigation">
+      <a href="#start" data-nav="start">Start</a>
+      <a href="#plattform" data-nav="plattform">Plattform</a>
+      <a href="#status" data-nav="status">Status</a>
+      <a href="#team" data-nav="team">Team</a>
+      <a href="#faq" data-nav="faq">FAQ</a>
+    </nav>
+
+    <div class="topbar-right">
+      <span class="nav-status"><span class="pulse green"></span> Alle Systeme online</span>
+      <a class="nav-cta" href="#start">API-Key holen <span>↗</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#start">Start</a>
+    <a href="#plattform">Plattform</a>
+    <a href="#status">Status</a>
+    <a href="#guidelines">Guidelines</a>
+    <a href="#team">Contributors</a>
+    <a href="#faq">FAQ</a>
+  </div>
+
+  <main id="top">
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-main">
+          <div class="hero-badge">
+            <span class="pulse"></span>
+            <span>Public Beta · v2.4.1</span>
+            <span class="badge-sep"></span>
+            <span class="muted">3 Regionen</span>
+          </div>
+
+          <h1>
+            <span class="line">Baue schneller.</span>
+            <span class="line gradient">Skaliere ruhiger.</span>
+          </h1>
+
+          <p class="hero-copy">
+            Eine API für Auth, Daten und Deployments. Typsichere SDKs, faire Limits
+            und ein Dashboard, das dir zeigt, was wirklich passiert — statt dich
+            durch Logs zu graben.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button primary" href="#start">API-Key erzeugen <span>↗</span></a>
+            <a class="button secondary" href="#plattform">Docs ansehen <span>↓</span></a>
+          </div>
+
+          <div class="hero-meta">
+            <div class="hero-endpoint">
+              <span class="meta-label">Base URL</span>
+              <code>api.adrjinos.dev/v1</code>
+              <button class="mini-copy" data-copy="https://api.adrjinos.dev/v1" aria-label="Basis-URL kopieren">⧉</button>
+            </div>
+            <div class="hero-uptime"><span class="pulse green"></span> 99,98 % Uptime</div>
+          </div>
+
+          <ul class="hero-tags" aria-label="Protokolle und Sprachen">
+            <li>REST</li>
+            <li>GraphQL</li>
+            <li>Webhooks</li>
+            <li>Node</li>
+            <li>Python</li>
+            <li>Go</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual">
+          <div class="emblem" aria-hidden="true">
+            <div class="ring r1"></div>
+            <div class="ring r2"></div>
+            <div class="ring r3"></div>
+            <div class="orbit"><i></i></div>
+            <div class="orbit o2"><i></i></div>
+            <div class="emblem-core">
+              <span>AD</span>
+              <small>developer portal</small>
+            </div>
+          </div>
+
+          <div class="orb-card orb-a" aria-hidden="true">
+            <span class="orb-ok">✓</span> deploy · 4,1 s
+          </div>
+          <div class="orb-card orb-b" aria-hidden="true">
+            <span class="orb-dot"></span> uptime · 99,98 %
+          </div>
+          <div class="orb-card orb-c" aria-hidden="true">
+            <span class="orb-dot violet"></span> p95 · <span id="orbLatency">132</span> ms
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>REST API</span><i>◆</i><span>GraphQL</span><i>◆</i><span>Webhooks</span><i>◆</i>
+        <span>Node SDK</span><i>◆</i><span>Python SDK</span><i>◆</i><span>Go SDK</span><i>◆</i>
+        <span>Edge Runtime</span><i>◆</i><span>3 Regionen</span><i>◆</i><span>OpenAPI</span><i>◆</i>
+        <span>REST API</span><i>◆</i><span>GraphQL</span><i>◆</i><span>Webhooks</span><i>◆</i>
+        <span>Node SDK</span><i>◆</i><span>Python SDK</span><i>◆</i><span>Go SDK</span><i>◆</i>
+        <span>Edge Runtime</span><i>◆</i><span>3 Regionen</span><i>◆</i><span>OpenAPI</span><i>◆</i>
+      </div>
+    </div>
+
+    <!-- ================= QUICKSTART ================= -->
+    <section class="quickstart" id="start">
+      <div class="section-head">
+        <div>
+          <p class="kicker"><span class="idx">01</span> Schnellstart</p>
+          <h2>Von null <span class="gradient">auf live</span></h2>
+        </div>
+        <button class="copy-button" data-copy="api.adrjinos.dev/v1">Base URL kopieren <span>⧉</span></button>
+      </div>
+
+      <ol class="steps">
+        <li class="step span-card reveal tilt">
+          <span class="step-num">1</span>
+          <h3>Key erzeugen</h3>
+          <p>Projekt im Dashboard anlegen und den ersten API-Key ziehen. Scopes lassen sich später jederzeit einschränken.</p>
+          <p class="step-foot">≈ 30 Sekunden</p>
+        </li>
+        <li class="step span-card reveal tilt">
+          <span class="step-num">2</span>
+          <h3>Ersten Call senden</h3>
+          <p>Ein Request genügt, um zu sehen, dass alles sitzt. Der Key gehört in die Umgebungsvariable, nie ins Repo.</p>
+          <div class="inline-code">
+            <code>curl https://api.adrjinos.dev/v1/ping -H "Authorization: Bearer $ADJ_KEY"</code>
+            <button class="mini-copy" data-copy='curl https://api.adrjinos.dev/v1/ping -H "Authorization: Bearer $ADJ_KEY"' aria-label="curl-Befehl kopieren">⧉</button>
+          </div>
+        </li>
+        <li class="step span-card reveal tilt">
+          <span class="step-num">3</span>
+          <h3>Deployen</h3>
+          <p>Repo verbinden, auf <code>main</code> pushen und den Build im Dashboard beobachten. Rollbacks sind ein Klick.</p>
+          <p class="step-foot">Zero-Downtime</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ================= PLATFORM ================= -->
+    <section class="platform" id="plattform">
+      <div class="section-head">
+        <div>
+          <p class="kicker"><span class="idx">02</span> Ein erster Einblick</p>
+          <h2>Konsole statt <span class="gradient">Rätselraten</span></h2>
+        </div>
+        <span class="pill online"><span class="pulse green"></span> API erreichbar</span>
+      </div>
+
+      <div class="showcase">
+        <div class="terminal reveal">
+          <div class="terminal-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="terminal-title">adj-cli — deploy</span>
+            <span class="terminal-tag"><span class="pulse green"></span> LIVE</span>
+          </div>
+<pre class="terminal-body" aria-label="Beispiel-Deploy im Terminal"><span class="c-muted">$</span> adj deploy --project portal
+
+<span class="c-muted">›</span> connecting to api.adrjinos.dev <span class="c-ok">✓</span>
+<span class="c-muted">›</span> building artifact             <span class="c-ok">✓</span>  4.1s
+<span class="c-muted">›</span> running smoke tests            <span class="c-ok">✓</span>  12/12
+<span class="c-muted">›</span> promoting to production        <span class="c-ok">✓</span>
+
+<span class="c-key">{</span>
+  <span class="c-key">"status"</span>: <span class="c-str">"deployed"</span>,
+  <span class="c-key">"region"</span>: <span class="c-str">"eu-central-1"</span>,
+  <span class="c-key">"latency_ms"</span>: <span class="c-num">41</span>,
+  <span class="c-key">"version"</span>: <span class="c-str">"2.4.1"</span>,
+  <span class="c-key">"url"</span>: <span class="c-str">"https://portal.adrjinos.dev"</span>
+<span class="c-key">}</span><span class="caret" aria-hidden="true"></span></pre>
+        </div>
+
+        <div class="showcase-side">
+          <article class="feature-card reveal tilt">
+            <span class="feature-icon">◇</span>
+            <h3>Typsichere SDKs</h3>
+            <p>Generiert aus der OpenAPI-Spec, nicht handgeschrieben. Änderungen landen im Changelog, bevor sie brechen.</p>
+          </article>
+          <article class="feature-card reveal tilt">
+            <span class="feature-icon">◈</span>
+            <h3>Limits, die man lesen kann</h3>
+            <p>Jede Antwort trägt ihre Rate-Limit-Header. Kein Blindflug, kein stilles Drosseln.</p>
+          </article>
+          <article class="feature-card reveal tilt">
+            <span class="feature-icon">◆</span>
+            <h3>Webhooks ohne Polling</h3>
+            <p>Signierte Events mit Retry und Replay. Ein Endpoint, alle Zustände.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STATUS ================= -->
+    <section class="status" id="status">
+      <div class="section-head">
+        <div>
+          <p class="kicker"><span class="idx">03</span> Live Übersicht</p>
+          <h2>Plattform <span class="gradient">Status</span></h2>
+        </div>
+        <span class="muted-note">Aktualisiert <b id="updatedAt">gerade eben</b></span>
+      </div>
+
+      <div class="status-grid">
+        <article class="status-card reveal tilt">
+          <p class="card-label">API Status</p>
+          <p class="status-value ok"><span class="pulse green"></span> Operational</p>
+          <div class="uptime-bar" aria-label="Uptime 99,98 Prozent"><span style="width: 99.98%"></span></div>
+          <p class="card-foot">99,98 % Uptime · 90 Tage</p>
+        </article>
+
+        <article class="status-card reveal tilt">
+          <p class="card-label">Requests 24h</p>
+          <p class="status-value"><span data-count="1284397">1.284.397</span></p>
+          <div class="spark" aria-hidden="true">
+            <i style="height: 34%"></i><i style="height: 52%"></i><i style="height: 41%"></i>
+            <i style="height: 66%"></i><i style="height: 58%"></i><i style="height: 79%"></i>
+            <i style="height: 62%"></i><i style="height: 88%"></i><i style="height: 74%"></i>
+            <i style="height: 96%"></i><i style="height: 82%"></i><i style="height: 90%"></i>
+          </div>
+          <p class="card-foot">+7,4 % zur Vorwoche</p>
+        </article>
+
+        <article class="status-card reveal tilt">
+          <p class="card-label">P95 Latenz</p>
+          <p class="status-value"><span id="latency">132</span> <small>ms</small></p>
+          <div class="meter" aria-hidden="true"><span style="width: 42%"></span></div>
+          <p class="card-foot">Gemessen in eu-central-1</p>
+        </article>
+
+        <article class="status-card reveal tilt">
+          <p class="card-label">Release</p>
+          <p class="status-value">v2.4.1</p>
+          <p class="release-note">Stabil · Edge-Runtime aktualisiert, Webhooks v2 in Beta.</p>
+          <p class="card-foot">Nächstes Fenster: 2.5.0</p>
+        </article>
+      </div>
+
+      <div class="endpoint-row">
+        <span class="endpoint-label">Health</span>
+        <code>api.adrjinos.dev/v1/health</code>
+        <button class="mini-copy" data-copy="https://api.adrjinos.dev/v1/health" aria-label="Health-Endpoint kopieren">⧉</button>
+        <span class="endpoint-meta">Letzte Prüfung <b id="lastCheck">vor 12 s</b></span>
+      </div>
+    </section>
+
+    <!-- ================= GUIDELINES ================= -->
+    <section class="guidelines" id="guidelines">
+      <div class="section-head">
+        <div>
+          <p class="kicker"><span class="idx">04</span> Fair Play für alle</p>
+          <h2>Unsere API-<span class="gradient">Guidelines</span></h2>
+        </div>
+        <a class="text-link" href="#faq">Vollständige Guidelines <span>↗</span></a>
+      </div>
+
+      <div class="guide-grid">
+        <article class="guide-card reveal tilt">
+          <span class="guide-num">01</span>
+          <h3>Keys bleiben geheim</h3>
+          <p>Nur in Umgebungsvariablen, nie im Client-Bundle. Eine Rotation ist jederzeit möglich und alte Keys verfallen nach 24 Stunden.</p>
+        </article>
+        <article class="guide-card reveal tilt">
+          <span class="guide-num">02</span>
+          <h3>Limits respektieren</h3>
+          <p>Backoff statt Retry-Sturm. Ab 429 gilt der <code>Retry-After</code>-Header, nicht die eigene Schätzung.</p>
+        </article>
+        <article class="guide-card reveal tilt">
+          <span class="guide-num">03</span>
+          <h3>Sauber cachen</h3>
+          <p>ETags nutzen und Antworten mit <code>Cache-Control</code> respektieren. Das spart dir Geld und uns Last.</p>
+        </article>
+        <article class="guide-card reveal tilt">
+          <span class="guide-num">04</span>
+          <h3>Verantwortungsvoll schreiben</h3>
+          <p>Keine personenbezogenen Daten in Logs oder URLs. Schreibende Requests immer idempotent mit Idempotency-Key.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="about" id="about">
+      <div class="about-grid">
+        <div class="about-intro reveal">
+          <p class="kicker"><span class="idx">05</span> Mehr als eine API</p>
+          <h2>Das ist <span class="gradient">Adrjinos</span></h2>
+          <p>
+            Gestartet als internes Tool für drei Teams, heute die gemeinsame Basis
+            für alles, was wir ausliefern. Offene Specs, öffentliches Changelog,
+            Docs im selben Repo wie der Code.
+          </p>
+          <div class="about-stats">
+            <div><b data-count="2400" data-suffix="+">2.400+</b><span>aktive Projekte</span></div>
+            <div><b data-count="38" data-suffix=" ms">38 ms</b><span>Median Latenz</span></div>
+            <div><b data-count="3">3</b><span>Regionen</span></div>
+          </div>
+        </div>
+
+        <div class="progress-panel reveal tilt">
+          <p class="card-label">Roadmap · Q4 2026</p>
+          <div class="progress-row">
+            <span>Core API</span><b>92 %</b>
+            <div class="progress-track"><span style="--v: 92%"></span></div>
+          </div>
+          <div class="progress-row">
+            <span>SDKs</span><b>74 %</b>
+            <div class="progress-track"><span style="--v: 74%"></span></div>
+          </div>
+          <div class="progress-row">
+            <span>Dashboard</span><b>68 %</b>
+            <div class="progress-track"><span style="--v: 68%"></span></div>
+          </div>
+          <div class="progress-row">
+            <span>Docs</span><b>58 %</b>
+            <div class="progress-track"><span style="--v: 58%"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TEAM ================= -->
+    <section class="team" id="team">
+      <div class="section-head">
+        <div>
+          <p class="kicker"><span class="idx">06</span> Wer dahintersteht</p>
+          <h2><span class="gradient">Contributors</span></h2>
+        </div>
+        <span class="muted-note">6 von 14 Menschen im Kernteam</span>
+      </div>
+
+      <div class="team-grid">
+        <article class="member reveal tilt">
+          <span class="avatar" aria-hidden="true">MK</span>
+          <h3>Mira K.</h3>
+          <p class="role">Maintainer</p>
+          <p class="member-note">API-Design, Specs, Releases</p>
+        </article>
+        <article class="member reveal tilt">
+          <span class="avatar" aria-hidden="true">JB</span>
+          <h3>Jonas B.</h3>
+          <p class="role">Core</p>
+          <p class="member-note">Runtime, Auth, Rate Limits</p>
+        </article>
+        <article class="member reveal tilt">
+          <span class="avatar" aria-hidden="true">LS</span>
+          <h3>Lea S.</h3>
+          <p class="role">Docs &amp; DX</p>
+          <p class="member-note">Docs, Beispiele, Changelog</p>
+        </article>
+        <article class="member reveal tilt">
+          <span class="avatar" aria-hidden="true">TR</span>
+          <h3>Tomas R.</h3>
+          <p class="role">SDKs</p>
+          <p class="member-note">Node, Python, Go</p>
+        </article>
+        <article class="member reveal tilt">
+          <span class="avatar" aria-hidden="true">AD</span>
+          <h3>Ayla D.</h3>
+          <p class="role">Dashboard</p>
+          <p class="member-note">Console, Analytics, Billing</p>
+        </article>
+        <article class="member reveal tilt">
+          <span class="avatar" aria-hidden="true">NH</span>
+          <h3>Noor H.</h3>
+          <p class="role">Infra</p>
+          <p class="member-note">Edge, Deployments, Status</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="faq" id="faq">
+      <div class="section-head">
+        <div>
+          <p class="kicker"><span class="idx">07</span> FAQ</p>
+          <h2>Häufige <span class="gradient">Fragen</span></h2>
+        </div>
+        <a class="text-link" href="mailto:dev@adrjinos.dev">Frage stellen <span>↗</span></a>
+      </div>
+
+      <div class="faq-list">
+        <details class="reveal" open>
+          <summary>Ist der Zugang kostenlos?<span class="plus" aria-hidden="true"></span></summary>
+          <p>Der Free-Plan enthält 10.000 Requests pro Monat, zwei Projekte und Community-Support. Limits und Preise stehen transparent im Dashboard — ohne Kreditkarte zum Start.</p>
+        </details>
+        <details class="reveal">
+          <summary>Wie rotiere ich einen API-Key?<span class="plus" aria-hidden="true"></span></summary>
+          <p>Dashboard → Projekt → Keys → Rotate. Der alte Key bleibt 24 Stunden gültig, damit laufende Deployments nicht brechen. Danach wird er automatisch ungültig.</p>
+        </details>
+        <details class="reveal">
+          <summary>Gibt es Rate Limits?<span class="plus" aria-hidden="true"></span></summary>
+          <p>Standard sind 120 Requests pro Minute und Key, mit einem Burst von 300. Jede Antwort enthält die Header <code>X-RateLimit-Limit</code>, <code>-Remaining</code> und <code>-Reset</code>.</p>
+        </details>
+        <details class="reveal">
+          <summary>Welche Regionen gibt es?<span class="plus" aria-hidden="true"></span></summary>
+          <p>Aktuell eu-central-1, us-east-1 und ap-south-1. Die Region wird pro Projekt gesetzt, Daten verlassen sie nicht. Weitere Regionen folgen mit 2.5.0.</p>
+        </details>
+        <details class="reveal">
+          <summary>Wie bekomme ich Support?<span class="plus" aria-hidden="true"></span></summary>
+          <p>Öffentlich über Discord und Issues, für zahlende Teams per E-Mail mit Reaktionszeit unter einem Werktag. Status-Incidents werden im Dashboard und auf der Statusseite gemeldet.</p>
+        </details>
+        <details class="reveal">
+          <summary>Kann ich selbst hosten?<span class="plus" aria-hidden="true"></span></summary>
+          <p>Für Enterprise gibt es ein selbst betriebenes Gateway mit derselben API-Oberfläche. Alles andere läuft auf unserer Edge — bewusst, damit Updates nicht auseinanderlaufen.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <section class="cta">
+      <div class="cta-inner reveal">
+        <div class="cta-orb" aria-hidden="true"></div>
+        <p class="kicker center"><span class="idx">08</span> Dein Key wartet</p>
+        <h2>Bereit für den<br /><span class="gradient">ersten Call?</span></h2>
+        <p class="cta-copy">Projekt anlegen, Key kopieren, Request senden. Der Rest ist Dokumentation.</p>
+        <div class="cta-code">
+          <code>api.adrjinos.dev/v1</code>
+          <button class="mini-copy" data-copy="https://api.adrjinos.dev/v1" aria-label="Basis-URL kopieren">⧉</button>
+        </div>
+        <a class="button primary" href="#start">Jetzt starten <span>↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand" href="#top" aria-label="Zurück nach oben">
+      <span class="brand-mark small" aria-hidden="true">AD</span>
+      <span class="brand-text">ADRJINOS <small>DEVELOPER PORTAL</small></span>
+    </a>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#plattform">Docs</a>
+      <a href="#status">Status</a>
+      <a href="#guidelines">Guidelines</a>
+      <a href="#team">Team</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <p class="footer-note">© <span id="year">2026</span> Adrjinos Developer Portal</p>
+    <a class="back-top" href="#top">Nach oben <span>↑</span></a>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
